@@ -102,6 +102,8 @@ function generatePassword(){
   console.log(numeric);
   getSpecial();
   console.log(special);
+
+  
 } 
 
 // Get references to the #generate element
