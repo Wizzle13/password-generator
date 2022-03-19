@@ -93,17 +93,28 @@ function getSpecial(){
 // This section will generate the password.
 function generatePassword(){
   getCharCount();
-  console.log(charCount);
-  getUpperCase();
-  console.log(upperCase);
-  getLowerCase();
-  console.log(lowerCase);
-  getNumeric();
-  console.log(numeric);
-  getSpecial();
-  console.log(special);
-
   
+  console.log(charCount);
+  // getUpperCase();
+  // console.log(upperCase);
+  // getLowerCase();
+  // console.log(lowerCase);
+  // getNumeric();
+  // console.log(numeric);
+  // getSpecial();
+  // console.log(special);
+
+  let i = 0;
+  do {
+    i += 1;
+    console.log(i);
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
+    var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    passWord += getRandomLetter;
+    
+  } 
+  while (i < charCount)
+  return(passWord)
 } 
 
 // Get references to the #generate element
