@@ -4,6 +4,11 @@ var upperCase = "";
 var lowerCase = "";
 var numeric = "";
 var special = "";
+var newPassWord = "";
+var upperCaseUsed = "no";
+var lowerCaseUsed = "no";
+var numericUsed = "no";
+var specialUsed = "no";
 
 // This section will get the lenght of the password and make sure it is between 8-128.
 function getCharCount(){
@@ -90,31 +95,120 @@ function getSpecial(){
   }
   
 }
-// This section will generate the password.
-function generatePassword(){
-  getCharCount();
-  
-  console.log(charCount);
-  // getUpperCase();
-  // console.log(upperCase);
-  // getLowerCase();
-  // console.log(lowerCase);
-  // getNumeric();
-  // console.log(numeric);
-  // getSpecial();
-  // console.log(special);
 
+function selectLowerCase(){
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+    var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    newPassWord += getRandomLetter;
+    return(newPassWord);
+}
+
+function selectUpperCase(){
+  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    newPassWord += getRandomLetter;
+    return(newPassWord);
+}
+
+function selectNumeric(){
+  var alphabet = "1234567890";
+    var getRandomNumber = alphabet[Math.floor(Math.random() * alphabet.length)];
+    newPassWord += getRandomNumber;
+    return(newPassWord);
+}
+
+function selectSpecial(){
+  var alphabet = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  var getRandomNumber = alphabet[Math.floor(Math.random() * alphabet.length)];
+  newPassWord += getRandomNumber;
+  return(newPassWord);
+}
+function selectPassword(){
+  //  debugger;
   let i = 0;
   do {
     i += 1;
-    console.log(i);
-    var alphabet = "abcdefghijklmnopqrstuvwxyz";
-    var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-    passWord += getRandomLetter;
-    
+    // console.log = i;
+    var letters = "1234";
+    var getRandomLetter = letters[Math.floor(Math.random() * letters.length)];
+    getRandomLetter = parseInt(getRandomLetter);
+    switch (getRandomLetter) {
+      case 1:
+        if (upperCase === "yes"){
+          selectUpperCase();
+          upperCaseUsed = "yes";
+          
+        }
+        else {
+          i-=1;
+        }
+        break;
+      case 2:
+        if (lowerCase === "yes"){
+          selectLowerCase();
+          lowerCaseUsed = "yes";
+          
+        }
+        else {
+          i-=1;
+        }
+        break;
+      case 3:
+        if (numeric === "yes"){
+          selectNumeric();
+          numericUsed = "yes"
+          
+        }
+        else {
+          i-=1;
+        }
+        break;
+      case 4:
+        if (special === "yes"){
+          selectSpecial();
+          specialUsed = "yes";
+        }
+        else {
+          i-=1;
+        }
+        break;
+    }
   } 
   while (i < charCount)
-  return(passWord)
+  return(newPassWord);
+}
+
+// This section will generate the password.
+function generatePassword(){
+ 
+  newPassWord ="";
+  getCharCount();
+  // console.log(charCount);
+  getUpperCase();
+  // console.log(upperCase);
+   getLowerCase();
+  //  console.log(lowerCase);
+  getNumeric();
+  console.log(numeric);
+  getSpecial();
+  // console.log(special);
+
+  selectPassword();
+  
+  // return(newPassWord);
+
+  if (lowerCase === lowerCaseUsed && upperCase === upperCaseUsed && numeric === numericUsed && special === specialUsed){
+    return(newPassWord);
+  }
+  else{
+    upperCaseUsed = "no";
+    lowerCaseUsed = "no";
+    numericUsed = "no";
+    specialUsed = "no";
+    // newPassWord = "";
+    i = 0;
+    selectPassword();
+  }
 } 
 
 // Get references to the #generate element
@@ -122,6 +216,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
