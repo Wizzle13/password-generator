@@ -1,4 +1,5 @@
 // Assignment code here
+//  sets begining values
 var charCount = "";
 var upperCase = "";
 var lowerCase = "";
@@ -21,7 +22,6 @@ function getCharCount(){
     window.alert("Youn number need to be bettween 8 - 128!");
     getCharCount();
   } 
-  
 }
 
 //This section will determan it you want Uppercase
@@ -39,7 +39,6 @@ function getUpperCase(){
     window.alert("You need to anwser Yes of No");
     getUpperCase();
   }
-  
 }
 
 //This section will determan it you want lowercase
@@ -57,7 +56,6 @@ function getLowerCase(){
     window.alert("You need to anwser Yes of No");
     getLowerCase();
   }
-  
 }
 
 //This section will determian it you want numerics
@@ -75,7 +73,6 @@ function getNumeric(){
     window.alert("You need to anwser Yes of No");
     getNumeric();
   }
-  
 }
 
 //This section will determian it you want Special Characters
@@ -93,9 +90,9 @@ function getSpecial(){
     window.alert("You need to anwser Yes of No");
     getSpecial();
   }
-  
 }
 
+// randomly selects lowercase letter
 function selectLowerCase(){
   var alphabet = "abcdefghijklmnopqrstuvwxyz";
     var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -103,6 +100,7 @@ function selectLowerCase(){
     return(newPassWord);
 }
 
+// randomly selects Uppercase letter
 function selectUpperCase(){
   var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -110,6 +108,7 @@ function selectUpperCase(){
     return(newPassWord);
 }
 
+//  randomly selects number
 function selectNumeric(){
   var alphabet = "1234567890";
     var getRandomNumber = alphabet[Math.floor(Math.random() * alphabet.length)];
@@ -117,12 +116,15 @@ function selectNumeric(){
     return(newPassWord);
 }
 
+// Randomly selects a special character
 function selectSpecial(){
   var alphabet = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   var getRandomNumber = alphabet[Math.floor(Math.random() * alphabet.length)];
   newPassWord += getRandomNumber;
   return(newPassWord);
 }
+
+// Randomly selects 1 of the 4 options
 function selectPassword(){
   //  debugger;
   let i = 0;
@@ -137,7 +139,6 @@ function selectPassword(){
         if (upperCase === "yes"){
           selectUpperCase();
           upperCaseUsed = "yes";
-          
         }
         else {
           i-=1;
@@ -147,7 +148,6 @@ function selectPassword(){
         if (lowerCase === "yes"){
           selectLowerCase();
           lowerCaseUsed = "yes";
-          
         }
         else {
           i-=1;
@@ -157,7 +157,6 @@ function selectPassword(){
         if (numeric === "yes"){
           selectNumeric();
           numericUsed = "yes"
-          
         }
         else {
           i-=1;
@@ -173,6 +172,8 @@ function selectPassword(){
         }
         break;
     }
+    console.log(i);
+    console.log(newPassWord);
   } 
   while (i < charCount)
   return(newPassWord);
@@ -180,23 +181,20 @@ function selectPassword(){
 
 // This section will generate the password.
 function generatePassword(){
- 
   newPassWord ="";
   getCharCount();
-  // console.log(charCount);
+  console.log(charCount);
   getUpperCase();
-  // console.log(upperCase);
-   getLowerCase();
-  //  console.log(lowerCase);
+  console.log(upperCase);
+  getLowerCase();
+  console.log(lowerCase);
   getNumeric();
   console.log(numeric);
   getSpecial();
-  // console.log(special);
-
+  console.log(special);
   selectPassword();
   
-  // return(newPassWord);
-
+  // verify all requested options are used.
   if (lowerCase === lowerCaseUsed && upperCase === upperCaseUsed && numeric === numericUsed && special === specialUsed){
     return(newPassWord);
   }
@@ -205,7 +203,7 @@ function generatePassword(){
     lowerCaseUsed = "no";
     numericUsed = "no";
     specialUsed = "no";
-    // newPassWord = "";
+    newPassWord = "";
     i = 0;
     selectPassword();
   }
@@ -216,12 +214,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-   
 }
 
 // Add event listener to generate button
