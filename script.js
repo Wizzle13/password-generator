@@ -11,6 +11,20 @@ var lowerCaseUsed = "no";
 var numericUsed = "no";
 var specialUsed = "no";
 
+
+function resetValues() {
+  upperCaseUsed = "no";
+  lowerCaseUsed = "no";
+  numericUsed = "no";
+  specialUsed = "no";
+  newPassWord = "";
+  charCount = "";
+  upperCase = "";
+  lowerCase = "";
+  numeric = "";
+  special = "";
+}
+
 // This section will get the lenght of the password and make sure it is between 8-128.
 function getCharCount(){
   charCount = prompt("How many characters would you like your password? (8-128)");
@@ -181,7 +195,7 @@ function selectPassword(){
 
 // This section will generate the password.
 function generatePassword(){
-  newPassWord ="";
+  resetValues();
   getCharCount();
   console.log(charCount);
   getUpperCase();
@@ -199,11 +213,7 @@ function generatePassword(){
     return(newPassWord);
   }
   else{
-    upperCaseUsed = "no";
-    lowerCaseUsed = "no";
-    numericUsed = "no";
-    specialUsed = "no";
-    newPassWord = "";
+    resetValues();
     i = 0;
     selectPassword();
   }
