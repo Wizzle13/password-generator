@@ -47,6 +47,6 @@ THEN the password is either displayed in an alert or written to the page
 
 #### Links:
 
-GitHub Repository: https://github.com/Wizzle13/passworkd-generator
+GitHub Repository: https://github.com/Wizzle13/password-generator
 
-GitHub URL: https://wizzle13.github.io/passworkd-generator/
+GitHub URL: https://wizzle13.github.io/password-generator/
